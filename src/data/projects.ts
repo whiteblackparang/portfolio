@@ -1,0 +1,377 @@
+// src/data/projects.ts
+export type ProjectCategory = "ml" | "dl" | "nlp" | "ts" | "product" | "sql";
+
+export interface Project {
+  title: string;
+  category: ProjectCategory;
+  sub: string;
+  desc: string;
+  highlights: string[];
+  metrics: string[];
+  stack: string;
+  github: string;
+}
+
+export const categoryLabels: Record<ProjectCategory, string> = {
+  ml: "ML",
+  dl: "DL",
+  nlp: "NLP",
+  ts: "TS",
+  product: "PRODUCT",
+  sql: "SQL",
+};
+
+export const categoryColors: Record<ProjectCategory, string> = {
+  ml: "#6382ff",
+  dl: "#a78bfa",
+  nlp: "#34d399",
+  ts: "#38bdf8",
+  product: "#f472b6",
+  sql: "#fbbf24",
+};
+
+export const projects: Project[] = [
+  {
+    title: "광고 클릭 예측",
+    category: "ml",
+    sub: "이진 분류 · 1,000건",
+    desc: "사용자 행동 데이터 기반 광고 클릭 여부 예측 모델 개발",
+    highlights: [
+      "7개 모델 비교 → Random Forest 최종 선정",
+      "9개 파생변수, GridSearchCV 540개 조합 탐색",
+      "40세+ & 저체류시간 고객 CTR 98.4% 세그먼트 발굴",
+    ],
+    metrics: ["Accuracy 96.5%", "AUC 0.993"],
+    stack: "Python · scikit-learn · pandas",
+    github: "https://github.com/whiteblackparang/Project/tree/main/Ad",
+  },
+  {
+    title: "이커머스 고객 이탈 예측",
+    category: "ml",
+    sub: "이진 분류 · SQL 리스크 플래그",
+    desc: "SQL 집계로 리스크 플래그 파생변수 생성 후 ML 이탈 예측 모델 개발",
+    highlights: [
+      "SQL로 is_inactive, has_complaint, is_new 등 파생변수 생성",
+      "LR vs Random Forest → RF 최종 선정",
+      "Low / Medium / High Risk 3단계 세분화",
+    ],
+    metrics: ["AUC 0.958"],
+    stack: "Python · scikit-learn · SQL",
+    github: "https://github.com/whiteblackparang/Project2/tree/main/churn-prediction",
+  },
+  {
+    title: "물류 배송 지연 예측",
+    category: "ml",
+    sub: "이진 분류 · 스마트 물류 데이터",
+    desc: "스마트 물류 데이터 기반 배송 지연 여부 예측 이진 분류 모델 개발",
+    highlights: [
+      "LR / RF / XGBoost 비교 → XGBoost 최종 선정",
+      "Traffic_Status 핵심 변수 (중요도 57.2%)",
+    ],
+    metrics: ["AUC 0.810"],
+    stack: "Python · scikit-learn · XGBoost",
+    github: "https://github.com/whiteblackparang/Project/tree/main/Supply_Chain",
+  },
+  {
+    title: "전국 음식점 소비 트렌드",
+    category: "ml",
+    sub: "RFM + K-Means · 326,826건",
+    desc: "공공데이터 기반 전국 음식점 소비 트렌드 분석 및 지역 유형화",
+    highlights: [
+      "포화형 소도시 vs 성장형 대도시 2개 클러스터 도출",
+      "LTV 추정 및 투자 우선순위 (경기도 화성시 1위)",
+    ],
+    metrics: ["Silhouette 0.595"],
+    stack: "Python · scikit-learn · pandas",
+    github: "https://github.com/whiteblackparang/Project/tree/main/Restaurant%20Consumption%20Trends%20Analysis",
+  },
+  {
+    title: "이커머스 SKU 수익성 최적화",
+    category: "ml",
+    sub: "K-Means · 148,012건 · 인도 Amazon",
+    desc: "Amazon·국제 판매 데이터 분석으로 SKU 수준 수익성 전략 도출",
+    highlights: [
+      "상위 3% SKU(211개)가 29% 매출 창출",
+      "K-Means SKU 세분화 (Silhouette 0.7624)",
+    ],
+    metrics: ["Silhouette 0.7624"],
+    stack: "Python · scikit-learn · pandas",
+    github: "https://github.com/whiteblackparang/Project/tree/main/eCommerce",
+  },
+  {
+    title: "크로스 플랫폼 음악 성과 분석",
+    category: "ml",
+    sub: "Spotify × YouTube · 20,000+ 트랙 · MLflow",
+    desc: "Spotify와 YouTube 통합 분석으로 히트곡 예측 모델 및 전략 수립",
+    highlights: [
+      "스트림 수 예측 R² 0.847, 히트곡 분류 Accuracy 92.3%",
+      "공식 MV ROI: 평균 스트림 +43.7%",
+      "MLflow 기반 실험 관리 시스템 구축",
+    ],
+    metrics: ["R² 0.847", "Accuracy 92.3%"],
+    stack: "Python · scikit-learn · MLflow · Streamlit",
+    github: "https://github.com/whiteblackparang/SpotifyYoutubeML",
+  },
+  {
+    title: "패션 커머스 개인화 추천 A/B 테스트",
+    category: "ml",
+    sub: "ALS + Hybrid · H&M · FastAPI + React 배포",
+    desc: "H&M 데이터셋 기반 개인화 추천 모델 A/B 실험",
+    highlights: [
+      "Hybrid α=0.1 채택: Hit Rate 동등 + Catalog Coverage 109배",
+      "FastAPI 백엔드 + React 프론트 실서비스 배포",
+    ],
+    metrics: ["Hit Rate 35.9%", "Coverage ×109"],
+    stack: "Python · implicit(ALS) · FastAPI · React",
+    github: "https://github.com/whiteblackparang/fashion-reco-ab-test",
+  },
+  {
+    title: "보드게임 추천 시스템 + 모델 경량화",
+    category: "dl",
+    sub: "NCF · 1,894만 평점 레코드",
+    desc: "딥러닝 추천 시스템 구축 및 2-bit 양자화 모델 경량화 연구",
+    highlights: [
+      "PyTorch NCF RMSE 7.43% 개선 (1.1960 → 1.1071)",
+      "2-bit 양자화 모델 크기 93.4% 감소 (25.97MB → 1.72MB)",
+    ],
+    metrics: ["RMSE ↓7.43%", "모델 ↓93.4%"],
+    stack: "Python · PyTorch · scikit-learn",
+    github: "https://github.com/whiteblackparang/Project/tree/main/Game",
+  },
+  {
+    title: "패션 이미지 추천 시스템",
+    category: "dl",
+    sub: "ResNet50 · TF vs PyTorch · 861장",
+    desc: "ResNet50 기반 패션 이미지 임베딩 추천 시스템 및 프레임워크 비교",
+    highlights: [
+      "2,048차원 임베딩, TF가 PyTorch 대비 48% 빠름",
+      "동일 아키텍처라도 프레임워크별 완전히 다른 특성 공간 확인",
+    ],
+    metrics: ["TF 48% 빠름"],
+    stack: "Python · TensorFlow · PyTorch · Streamlit",
+    github: "https://github.com/whiteblackparang/Project/tree/main/fashion-recommendation",
+  },
+  {
+    title: "Netflix 콘텐츠 분석 & 추천",
+    category: "nlp",
+    sub: "TF-IDF + NetworkX · 8,807개",
+    desc: "Netflix 콘텐츠 트렌드 분석 및 TF-IDF 기반 추천 시스템 + 협업 네트워크",
+    highlights: [
+      "배우-감독 협업 네트워크 Degree/Betweenness Centrality 분석",
+      "TF-IDF + 코사인 유사도, 동일 장르 매칭 80%+",
+    ],
+    metrics: ["장르 매칭 80%+"],
+    stack: "Python · scikit-learn · NetworkX",
+    github: "https://github.com/whiteblackparang/Project/tree/main/Netflix",
+  },
+  {
+    title: "한국 영화 리뷰 감성 분류",
+    category: "nlp",
+    sub: "TF-IDF + Logistic Regression",
+    desc: "한국 영화 리뷰 텍스트 기반 긍정/부정 감성 분류 Baseline 모델",
+    highlights: [
+      "TF-IDF + LR → Validation Accuracy 0.84",
+      "Tableau 연계 CSV 출력",
+    ],
+    metrics: ["Accuracy 0.84"],
+    stack: "Python · scikit-learn · NLP",
+    github: "https://github.com/whiteblackparang/Project/tree/main/korean-movie-sentiment-analysis",
+  },
+  {
+    title: "Reddit 게시글 참여도 분석 & 추천",
+    category: "nlp",
+    sub: "LDA 토픽 모델링 · A/B 테스트",
+    desc: "Reddit 게시글 참여도 분석 및 세그먼트 기반 토픽 추천 시스템",
+    highlights: [
+      "LDA + Welch t-test + FDR 보정으로 유의한 positive topic 도출",
+      "KMeans 4개 세그먼트 (평균 score 1.76 ~ 9.63)",
+    ],
+    metrics: ["log_score +0.35"],
+    stack: "Python · scikit-learn · LDA · scipy",
+    github: "https://github.com/whiteblackparang/Project2/tree/main/Reddit",
+  },
+  {
+    title: "코로나19 5개국 확산 분석 & 예측",
+    category: "ts",
+    sub: "SEIR + LSTM · Johns Hopkins 2020–2023",
+    desc: "Johns Hopkins 데이터 기반 5개국 감염 확산 분석 및 예측",
+    highlights: [
+      "SEIR 모델 R₀ 추정, Auto-ARIMA 14일, LSTM 30일 예측",
+      "봉쇄 정책 효과 정량화 (미국: -19.2%p)",
+    ],
+    metrics: [],
+    stack: "Python · pmdarima · TensorFlow",
+    github: "https://github.com/whiteblackparang/Project/tree/main/Covid19",
+  },
+  {
+    title: "뉴욕 Citi Bike 수요 예측",
+    category: "ts",
+    sub: "LightGBM · 2,820만 건",
+    desc: "뉴욕 Citi Bike 이용 데이터 분석 및 시간별 수요 예측",
+    highlights: [
+      "LightGBM MAE 75%↓, RMSE 74%↓ (1,627 → 404)",
+      "스테이션별 순유입/유출 분석으로 재배치 우선순위 도출",
+    ],
+    metrics: ["MAE ↓75%", "RMSE ↓74%"],
+    stack: "Python · LightGBM · Prophet",
+    github: "https://github.com/whiteblackparang/Project/tree/main/citibike-demand-analysis",
+  },
+  {
+    title: "미국 기술주 포트폴리오 최적화",
+    category: "ts",
+    sub: "Monte Carlo · AAPL MSFT TSLA NVDA 외",
+    desc: "Monte Carlo 시뮬레이션으로 효율적 프론티어 탐색 및 포트폴리오 최적화",
+    highlights: [
+      "20,000회 시뮬레이션, Lag-5 선형회귀 수익률 예측",
+      "NVDA 최고 Sharpe Ratio 1.93, Streamlit 대시보드",
+    ],
+    metrics: ["Sharpe 1.93"],
+    stack: "Python · yfinance · Streamlit",
+    github: "https://github.com/whiteblackparang/Project/tree/main/stock_price_prediction",
+  },
+  {
+    title: "NYC 택시 운행 시간 예측",
+    category: "ts",
+    sub: "회귀 분석 · R · EDA",
+    desc: "NYC 택시 운행 데이터 EDA 및 운행 시간 예측 회귀 모델 개발",
+    highlights: [
+      "Haversine 거리, 시간대, 주말 피처 엔지니어링",
+      "LR / DT / RF 교차검증 비교",
+    ],
+    metrics: [],
+    stack: "R · ggplot2 · randomForest · caret",
+    github: "https://github.com/whiteblackparang/Project2/tree/main/nyc-taxi-trip",
+  },
+  {
+    title: "모바일 앱 리텐션 & 퍼널 분석",
+    category: "product",
+    sub: "코호트 분석 · 60,471명",
+    desc: "모바일 앱 이탈 지점 발굴 및 리텐션 개선 전략 도출",
+    highlights: [
+      "D1 리텐션 3.0% — 심각한 온보딩 문제 발견",
+      "퍼널 분석: 첫 클릭 단계 85% 이탈 확인",
+      "주별 코호트 + Light/Medium/Heavy User 세그먼테이션",
+    ],
+    metrics: ["D1 Retention 3%", "첫클릭 이탈 85%"],
+    stack: "Python · pandas · scipy · plotly",
+    github: "https://github.com/whiteblackparang/Project/tree/main/User%20Mobile%20App%20Interaction%20Data",
+  },
+  {
+    title: "국내 7개 도시 생활 패턴 분석",
+    category: "sql",
+    sub: "DB 설계 + SQL · MySQL",
+    desc: "MySQL 기반 관계형 DB 설계 및 7개 도시 이동·소비·날씨 통합 분석",
+    highlights: [
+      "6개 테이블·외래키 DB 스키마 직접 설계",
+      "윈도우 함수(RANK, DENSE_RANK, SUM OVER)로 도시별 순위 산출",
+    ],
+    metrics: [],
+    stack: "MySQL 8.0 · SQL",
+    github: "https://github.com/whiteblackparang/Project2/tree/main/urban",
+  },
+  {
+    title: "classicmodels SQL 비즈니스 분석",
+    category: "sql",
+    sub: "MySQL · RFM · 코호트 · Funnel",
+    desc: "MySQL classicmodels DB로 고객·매출·수익성 비즈니스 지표 분석",
+    highlights: [
+      "RFM 세그먼테이션 (VIP / Loyal / At Risk / Regular)",
+      "코호트 분석, 파레토 검증, 윈도우 함수 국가별 랭킹",
+    ],
+    metrics: [],
+    stack: "MySQL · SQL",
+    github: "https://github.com/whiteblackparang/SQL-Project",
+  },
+  {
+    title: "통신사 고객 이탈 분석 & ML 예측",
+    category: "sql",
+    sub: "SQL EDA + ML · Telco Churn",
+    desc: "SQL 탐색 분석으로 이탈 패턴 발굴 후 ML 다모델 비교 예측",
+    highlights: [
+      "계약 유형·요금제별 이탈률 SQL 분석",
+      "SMOTE 불균형 처리 + Ensemble VotingClassifier",
+      "VIP/이탈위험/업셀링 고객 세그먼테이션",
+    ],
+    metrics: ["AUC 0.8432", "F1 0.5997"],
+    stack: "Python · scikit-learn · XGBoost · SQL",
+    github: "https://github.com/whiteblackparang/SQL-Project",
+  },
+  {
+    title: "Spotify 트랙 인기도 SQL 분석",
+    category: "sql",
+    sub: "SQL · 장르·연도별 트렌드",
+    desc: "Spotify 데이터 기반 아티스트·장르·연도별 트렌드 분석",
+    highlights: [
+      "Top 트랙·아티스트 도출, 장르별 평균 인기·템포 분석",
+      "CTE·윈도우 함수 활용 복합 SQL 분석",
+    ],
+    metrics: [],
+    stack: "MySQL · SQL",
+    github: "https://github.com/whiteblackparang/SQL-Project",
+  },
+  {
+    title: "Olist 브라질 이커머스 SQL 분석",
+    category: "sql",
+    sub: "MySQL · 100K+ 주문",
+    desc: "브라질 이커머스 Olist 데이터로 고객·매출·배송 품질 지표 도출",
+    highlights: [
+      "RFM 지표, 6개월 매출 추적, 고객별 주문 간격 분석",
+      "배송 지연 vs 리뷰 점수 관계 분석, 이상 결제 탐지",
+    ],
+    metrics: [],
+    stack: "MySQL · SQL",
+    github: "https://github.com/whiteblackparang/Project/tree/main/olist_sql_project",
+  },
+  {
+    title: "온라인 리테일 고객 행동 분석",
+    category: "sql",
+    sub: "ETL · UCI Online Retail · MySQL",
+    desc: "UCI Online Retail 데이터 전처리 후 MySQL 적재, 구매 행동 분석",
+    highlights: [
+      "IsCancelled, TotalPrice 파생변수 생성 후 MySQL 적재",
+      "국가별·시간대별 매출 및 반복 구매 세그먼트 분석",
+    ],
+    metrics: [],
+    stack: "Python · pandas · MySQL · SQLAlchemy",
+    github: "https://github.com/whiteblackparang/Project/tree/main/Online%20Retail",
+  },
+  {
+    title: "Google Play 앱 ETL 파이프라인",
+    category: "sql",
+    sub: "데이터 엔지니어링 · SQLite",
+    desc: "Google Play 앱·리뷰 데이터 수집·정제·SQLite 적재 ETL 구축",
+    highlights: [
+      "Size 단위 통일, Installs 변환, 감성 결측 처리",
+      "apps, reviews 테이블 적재 및 데이터 품질 검증",
+    ],
+    metrics: [],
+    stack: "Python · pandas · SQLite",
+    github: "https://github.com/whiteblackparang/Project/tree/main/googleplay-trend-monitor",
+  },
+  {
+    title: "서울시 따릉이 이용 패턴 분석",
+    category: "sql",
+    sub: "ETL · MySQL · 2023–2025",
+    desc: "따릉이 이용 데이터 전처리·MySQL 적재 및 이용 패턴 분석",
+    highlights: [
+      "월별 KPI, 성별·연령대별 이용 패턴, 탄소 절감 효과 분석",
+      "파생변수 distance_km, speed_kmh, day_type + BI용 View 구축",
+    ],
+    metrics: [],
+    stack: "Python · MySQL · SQL · SQLAlchemy",
+    github: "https://github.com/whiteblackparang/Project-for-Data-Engineering/tree/main/bike_ETL",
+  },
+  {
+    title: "생활가전 리뷰 트렌드 모니터링",
+    category: "sql",
+    sub: "자동화 파이프라인 · GitHub Actions · Slack",
+    desc: "네이버쇼핑 생활가전 리뷰 자동 수집·분석 데이터 파이프라인",
+    highlights: [
+      "크롤러 → 감성 분석 → SQLite 적재 → Slack 웹훅 알림",
+      "GitHub Actions로 매주 월요일 오전 9시 자동 실행",
+    ],
+    metrics: [],
+    stack: "Python · SQLite · GitHub Actions · Slack",
+    github: "https://github.com/whiteblackparang/Review-Trend-Pipeline-Project",
+  },
+];

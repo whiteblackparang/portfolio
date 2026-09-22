@@ -2,7 +2,8 @@ import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
 import Featured from "@/components/sections/Featured";
 import Projects from "@/components/sections/Projects";
-
+import Education from "@/components/sections/Education";
+import Training from "@/components/sections/Training";
 
 export default function Home() {
   return (
@@ -12,6 +13,8 @@ export default function Home() {
         <Hero />
         <Featured />
         <Projects />
+        <Education />
+        <Training />
       </main>
     </div>
   );

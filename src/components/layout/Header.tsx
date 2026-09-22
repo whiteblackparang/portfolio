@@ -6,20 +6,29 @@ export default function Header() {
           JongHun Lee
         </span>
 
-        <div className="hidden gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-400 sm:flex">
-          <a href="#about" className="hover:text-black dark:hover:text-zinc-50">
-            소개
-          </a>
-          <a href="#experience" className="hover:text-black dark:hover:text-zinc-50">
-            경력
-          </a>
-          <a href="#projects" className="hover:text-black dark:hover:text-zinc-50">
-            프로젝트
-          </a>
-          <a href="#contact" className="hover:text-black dark:hover:text-zinc-50">
-            연락처
-          </a>
-        </div>
+<div className="hidden gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-400 sm:flex">
+  <a href="#about" className="hover:text-black dark:hover:text-zinc-50">
+    소개
+  </a>
+  <a href="#experience" className="hover:text-black dark:hover:text-zinc-50">
+    경력
+  </a>
+  <a href="#projects" className="hover:text-black dark:hover:text-zinc-50">
+    프로젝트
+  </a>
+  <a href="#all-projects" className="hover:text-black dark:hover:text-zinc-50">
+    전체 프로젝트
+  </a>
+  <a href="#side-projects" className="hover:text-black dark:hover:text-zinc-50">
+    사이드 프로젝트
+  </a>
+  <a href="#skills" className="hover:text-black dark:hover:text-zinc-50">
+    기술
+  </a>
+  <a href="#education" className="hover:text-black dark:hover:text-zinc-50">
+    학력
+  </a>
+</div>
       </nav>
     </header>
   );

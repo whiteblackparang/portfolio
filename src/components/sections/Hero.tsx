@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
+    <section className="flex flex-col items-center gap-6 text-center">
       <h1 className="text-4xl font-bold tracking-tight text-black dark:text-zinc-50 sm:text-5xl">
         JongHun Lee
       </h1>
@@ -9,10 +9,10 @@ export default function Hero() {
         Data Analyst
       </p>
 
-      <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-        데이터로 문제를 해결하는 데이터 분석가입니다.
-        <br />
-        SQL과 Python을 활용해 비즈니스 문제를 데이터로 분석합니다.
+      <p className="max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+      데이터로 문제를 해결하는 데이터 분석가입니다.
+      <br />
+      SQL과 Python을 활용해 비즈니스 문제를 데이터로 분석합니다.
       </p>
 
       <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">

@@ -1,8 +1,7 @@
-// src/data/about.ts
 export interface ContactLink {
   label: string;
   url: string;
-  icon: "email" | "github" | "linkedin" | "tableau";
+  icon: "email" | "github" | "linkedin" | "tableau" | "blog";
 }
 
 export const aboutDescription =
@@ -12,5 +11,8 @@ export const contactLinks: ContactLink[] = [
   { label: "hun5639@naver.com", url: "mailto:hun5639@naver.com", icon: "email" },
   { label: "GitHub", url: "https://github.com/whiteblackparang", icon: "github" },
   { label: "LinkedIn", url: "https://www.linkedin.com/in/jonghunlee/", icon: "linkedin" },
-  { label: "Tableau", url: "https://public.tableau.com/app/profile/jonghun.lee40755/vizzes", icon: "tableau" },
+  { label: "Tableau", url: "https://public.tableau.com/app/profile/jonghun.lee4755/vizzes", icon: "tableau" },
+  { label: "Velog", url: "https://velog.io/@springtowinter/posts", icon: "blog" },
+  { label: "Tistory", url: "https://springtowinter-data.tistory.com/", icon: "blog" },
+  { label: "Naver Blog", url: "https://blog.naver.com/hopesdreamsforest", icon: "blog" },
 ];

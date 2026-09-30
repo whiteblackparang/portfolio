@@ -1,4 +1,3 @@
-// src/components/sections/Projects.tsx
 "use client";
 
 import { useState } from "react";
@@ -6,7 +5,11 @@ import {
   projects,
   categoryLabels,
   categoryColors,
+  roles,
+  roleLabels,
+  getRoles,
   type ProjectCategory,
+  type Role,
 } from "@/data/projects";
 
 const categories: (ProjectCategory | "all")[] = [
@@ -20,12 +23,16 @@ const categories: (ProjectCategory | "all")[] = [
 ];
 
 export default function Projects() {
-  const [active, setActive] = useState<ProjectCategory | "all">("all");
+  const [activeCat, setActiveCat] =
+    useState<ProjectCategory | "all">("all");
+  const [activeRole, setActiveRole] = useState<Role | "all">("all");
 
-  const filtered =
-    active === "all"
-      ? projects
-      : projects.filter((p) => p.category === active);
+  const filtered = projects.filter((p) => {
+    const catOk = activeCat === "all" || p.category === activeCat;
+    const roleOk = activeRole === "all" || getRoles(p).includes(activeRole);
+
+    return catOk && roleOk;
+  });
 
   return (
     <section id="all-projects" className="w-full max-w-5xl">
@@ -33,7 +40,39 @@ export default function Projects() {
         전체 프로젝트
       </h2>
 
-      {/* 필터 바 */}
+      {/* 직무 필터 */}
+      <div className="mb-3 flex flex-wrap items-center gap-2">
+        <span className="mr-1 font-mono text-[11px] uppercase tracking-wider text-zinc-400">
+          role
+        </span>
+
+        <button
+          onClick={() => setActiveRole("all")}
+          className={`rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
+            activeRole === "all"
+              ? "border-black bg-black text-white dark:border-zinc-50 dark:bg-zinc-50 dark:text-black"
+              : "border-black/[.1] text-zinc-600 hover:border-black hover:text-black dark:border-white/[.15] dark:text-zinc-400 dark:hover:text-zinc-50"
+          }`}
+        >
+          전체
+        </button>
+
+        {roles.map((r) => (
+          <button
+            key={r}
+            onClick={() => setActiveRole(r)}
+            className={`rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
+              activeRole === r
+                ? "border-black bg-black text-white dark:border-zinc-50 dark:bg-zinc-50 dark:text-black"
+                : "border-black/[.1] text-zinc-600 hover:border-black hover:text-black dark:border-white/[.15] dark:text-zinc-400 dark:hover:text-zinc-50"
+            }`}
+          >
+            {roleLabels[r]}
+          </button>
+        ))}
+      </div>
+
+      {/* 기술 카테고리 필터 */}
       <div className="mb-7 flex flex-wrap items-center gap-2">
         <span className="mr-1 font-mono text-[11px] uppercase tracking-wider text-zinc-400">
           filter
@@ -42,9 +81,9 @@ export default function Projects() {
         {categories.map((cat) => (
           <button
             key={cat}
-            onClick={() => setActive(cat)}
+            onClick={() => setActiveCat(cat)}
             className={`rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
-              active === cat
+              activeCat === cat
                 ? "border-blue-600 bg-blue-600 text-white"
                 : "border-black/[.1] text-zinc-600 hover:border-blue-500 hover:text-blue-600 dark:border-white/[.15] dark:text-zinc-400"
             }`}

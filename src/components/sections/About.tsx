@@ -8,23 +8,25 @@ export default function About() {
         소개
       </h2>
 
-      <div className="w-full rounded-2xl border border-black/[.08] bg-white p-6 text-center dark:border-white/[.1] dark:bg-zinc-950 sm:p-8">
-        <p className="mx-auto max-w-2xl text-[15px] leading-loose text-zinc-600 dark:text-zinc-400">
-          {aboutDescription}
-        </p>
+      <div className="w-full rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 p-[1.5px]">
+        <div className="w-full rounded-[15px] bg-white p-6 text-center dark:bg-zinc-950 sm:p-8">
+          <p className="text-[15px] text-zinc-600 dark:text-zinc-400">
+            {aboutDescription}
+          </p>
 
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          {contactLinks.map((c) => (
-            <a
-              key={c.label}
-              href={c.url}
-              target={c.icon === "email" ? undefined : "_blank"}
-              rel={c.icon === "email" ? undefined : "noopener noreferrer"}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-black/[.08] bg-zinc-50 px-4 py-2 text-sm text-zinc-600 transition-colors hover:border-blue-500 hover:text-blue-600 dark:border-white/[.1] dark:bg-zinc-900 dark:text-zinc-400"
-            >
-              {c.label}
-            </a>
-          ))}
+          <div className="mt-6 flex flex-wrap justify-center gap-2">
+            {contactLinks.slice(0, 3).map((c) => (
+              <a
+                key={c.label}
+                href={c.url}
+                target={c.icon === "email" ? undefined : "_blank"}
+                rel={c.icon === "email" ? undefined : "noopener noreferrer"}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-black/[.08] bg-zinc-50 px-4 py-2 text-sm text-zinc-600 transition-colors hover:border-blue-500 hover:text-blue-600 dark:border-white/[.1] dark:bg-zinc-900 dark:text-zinc-400"
+              >
+                {c.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

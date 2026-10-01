@@ -5,7 +5,7 @@ export interface ContactLink {
 }
 
 export const aboutDescription =
-  "데이터 속에서 의미를 찾고, 분석 결과를 비즈니스 언어로 바꾸는 것을 즐깁니다. Python · SQL · R을 활용해 데이터 수집부터 ML 모델링, ETL 파이프라인, 시각화까지 end-to-end 분석을 여러 프로젝트에 걸쳐 수행했습니다.";
+  "데이터 속 의미를 찾아 비즈니스 언어로 번역하는 데이터 분석가";
 
 export const contactLinks: ContactLink[] = [
   { label: "hun5639@naver.com", url: "mailto:hun5639@naver.com", icon: "email" },

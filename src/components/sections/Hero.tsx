@@ -10,18 +10,26 @@ export default function Hero() {
       </p>
 
       <p className="max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-      데이터로 문제를 해결하는 데이터 분석가입니다.
-      <br />
-      SQL과 Python을 활용해 비즈니스 문제를 데이터로 분석합니다.
+        데이터로 문제를 해결하는 데이터 분석가입니다.
+        <br />
+        SQL과 Python을 활용해 비즈니스 문제를 데이터로 분석합니다.
       </p>
 
-      <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+      <div className="flex flex-wrap justify-center gap-3 text-base font-medium">
         <a
-          href="/resume.pdf"
-          download
+          href="/resume-ko.pdf"
+          download="이종훈_이력서.pdf"
           className="flex h-12 items-center justify-center rounded-full bg-foreground px-6 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc]"
         >
-          이력서 다운로드
+          이력서 (KR)
+        </a>
+
+        <a
+          href="/resume-en.pdf"
+          download="Resume_JongHun_Lee.pdf"
+          className="flex h-12 items-center justify-center rounded-full border border-solid border-black/[.08] px-6 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
+        >
+          Resume (EN)
         </a>
 
         <a

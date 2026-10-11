@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/providers/ThemeProvider";
+import { site } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +15,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JongHun Lee | Data Analyst",
-  description: "데이터로 문제를 해결하는 데이터 분석가 이종훈입니다.",
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
+  keywords: [
+    "데이터 분석가",
+    "Data Analyst",
+    "포트폴리오",
+    "SQL",
+    "Python",
+    "A/B 테스트",
+    "Tableau",
+  ],
+  authors: [{ name: site.name }],
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    url: site.url,
+    siteName: site.name,
+    title: site.title,
+    description: site.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -1,3 +1,4 @@
+// src/components/layout/Header.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -20,9 +21,6 @@ export default function Header() {
 
         <div className="flex items-center gap-6">
           <div className="hidden gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-400 sm:flex">
-            <a href="#about" className="hover:text-black dark:hover:text-zinc-50">
-              소개
-            </a>
             <a href="#experience" className="hover:text-black dark:hover:text-zinc-50">
               경력
             </a>

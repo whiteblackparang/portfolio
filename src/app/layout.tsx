@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   verification: {
     google: "QsnvW87tf7YZcx8cj_yVrCBG9wgKjtr802FjvrVROJA",
     naver: "3b5d4c4684034249190345859e66ec3a7173a2e1",
-  },
+  } as any,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
